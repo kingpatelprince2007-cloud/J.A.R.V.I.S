@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>J.A.R.V.I.S.</title>
+
+<style>
+body {
+    margin: 0;
+    background: #050b12;
+    color: #00e5ff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 42px;
+    letter-spacing: 8px;
+    text-shadow: 0 0 20px #00e5ff;
+}
+
+.subtitle {
+    color: white;
+    opacity: 0.7;
+}
+
+.jarvis-circle {
+    width: 180px;
+    height: 180px;
+    border: 4px solid #00e5ff;
+    border-radius: 50%;
+    margin: 50px auto;
+    box-shadow: 0 0 40px #00e5ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+}
+
+.command-box {
+    display: flex;
+    max-width: 600px;
+    margin: auto;
+}
+
+input {
+    flex: 1;
+    padding: 18px;
+    font-size: 18px;
+    border-radius: 10px 0 0 10px;
+    border: 2px solid #00e5ff;
+    background: #0b1620;
+    color: white;
+}
+
+button {
+    padding: 18px 25px;
+    background: #00e5ff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+}
+
+.response {
+    margin: 30px auto;
+    max-width: 600px;
+    color: white;
+    font-size: 18px;
+}
+
+.quick-buttons {
+    margin-top: 40px;
+}
+
+.quick-buttons button {
+    margin: 8px;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>J.A.R.V.I.S.</h1>
+
+<p class="subtitle">Personal Artificial Intelligence Assistant</p>
+
+<div class="jarvis-circle">🤖</div>
+
+<div class="command-box">
+<input id="command" placeholder="Type a command...">
+<button onclick="runCommand()">RUN</button>
+</div>
+
+<div class="response" id="response">
+Hello, Prince. J.A.R.V.I.S. systems online.
+</div>
+
+<div class="quick-buttons">
+
+<button onclick="openCanvas()">📚 Canvas</button>
+
+<button onclick="openChatGPT()">🤖 ChatGPT</button>
+
+<button onclick="homework()">📝 Homework</button>
+
+</div>
+
+</div>
+
+<script>
+
+function runCommand() {
+    let command = document.getElementById("command").value;
+    let response = document.getElementById("response");
+
+    if (command === "") {
+        response.innerHTML = "Please enter a command.";
+    } else {
+        response.innerHTML =
+        "Command received: <b>" + command + "</b><br><br>J.A.R.V.I.S. is processing...";
+    }
+}
+
+function openCanvas() {
+    window.open("https://uic.instructure.com", "_blank");
+}
+
+function openChatGPT() {
+    window.open("https://chatgpt.com", "_blank");
+}
+
+function homework() {
+    document.getElementById("response").innerHTML =
+    "Homework system will be connected in Version 2.";
+}
+
+</script>
+
+</body>
+</html>
