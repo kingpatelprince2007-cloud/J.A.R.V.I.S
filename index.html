@@ -26,7 +26,7 @@ body {
 
 header {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 h1 {
@@ -75,15 +75,16 @@ h1 {
   border: 1px solid #00e5ff;
   border-radius: 15px;
   padding: 15px;
-  height: 330px;
+  height: 380px;
   overflow-y: auto;
   margin-bottom: 15px;
 }
 
 .message {
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 10px;
+  padding: 14px;
+  margin: 12px 0;
+  border-radius: 12px;
+  line-height: 1.5;
 }
 
 .jarvis {
@@ -123,7 +124,7 @@ button {
 }
 
 .quick {
-  margin-top: 25px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -140,6 +141,10 @@ button {
   color: white;
 }
 
+.typing {
+  opacity: 0.7;
+  font-style: italic;
+}
 </style>
 </head>
 
@@ -156,24 +161,30 @@ button {
 <div class="orb">🤖</div>
 
 <div class="chat" id="chat">
-  <div class="message jarvis">
-    <b>J.A.R.V.I.S:</b><br>
-    Good day, Prince. Systems are online. How can I assist you?
-  </div>
+
+<div class="message jarvis">
+<b>J.A.R.V.I.S:</b><br>
+Good day, Prince. Systems are online.<br>
+Ask me anything.
+</div>
+
 </div>
 
 <div class="command-area">
-  <input
-    id="command"
-    placeholder="Ask J.A.R.V.I.S anything..."
-    onkeydown="if(event.key==='Enter') runCommand()"
-  >
-  <button onclick="runCommand()">SEND</button>
+
+<input
+id="command"
+placeholder="Ask J.A.R.V.I.S anything..."
+onkeydown="if(event.key==='Enter') runCommand()"
+>
+
+<button onclick="runCommand()">SEND</button>
+
 </div>
 
 <div class="quick">
 
-<button onclick="webSearch()">🔎 Search Web</button>
+<button onclick="searchWeb()">🔎 Search Web</button>
 
 <button onclick="openCanvas()">📚 Canvas</button>
 
@@ -184,13 +195,15 @@ button {
 </div>
 
 <div class="info">
-⚡ <b>JARVIS V2</b><br>
-Try typing: <br><br>
-• Search for mechanical engineering internships<br>
-• Open Canvas<br>
-• Search the web for calculus limits<br>
-• What is today's date?<br>
-• Help me study chemistry
+
+⚡ <b>J.A.R.V.I.S V3</b><br><br>
+
+🌐 Internet Search<br>
+🤖 AI Brain Ready<br>
+📚 UIC Tools<br>
+📝 Homework System<br>
+📱 App Shortcuts
+
 </div>
 
 </div>
@@ -200,23 +213,46 @@ Try typing: <br><br>
 const chat = document.getElementById("chat");
 const commandInput = document.getElementById("command");
 
+
 function addMessage(type, text) {
+
   const message = document.createElement("div");
+
   message.className = "message " + type;
 
   if (type === "user") {
-    message.innerHTML = "<b>YOU:</b><br>" + text;
+
+    message.innerHTML =
+    "<b>YOU:</b><br>" + escapeHTML(text);
+
   } else {
-    message.innerHTML = "<b>J.A.R.V.I.S:</b><br>" + text;
+
+    message.innerHTML =
+    "<b>J.A.R.V.I.S:</b><br>" + text;
+
   }
 
   chat.appendChild(message);
+
   chat.scrollTop = chat.scrollHeight;
+
 }
 
-function runCommand() {
 
-  let command = commandInput.value.trim();
+function escapeHTML(text) {
+
+  const div = document.createElement("div");
+
+  div.textContent = text;
+
+  return div.innerHTML;
+
+}
+
+
+async function runCommand() {
+
+  const command = commandInput.value.trim();
 
   if (!command) return;
 
@@ -226,109 +262,229 @@ function runCommand() {
 
   const lower = command.toLowerCase();
 
+
+  // OPEN CANVAS
+
   if (lower.includes("open canvas")) {
 
-    addMessage("jarvis", "Opening Canvas.");
+    addMessage("jarvis",
+    "Opening UIC Canvas.");
 
-    setTimeout(() => {
-      window.open("https://uic.instructure.com", "_blank");
-    }, 700);
-
-  }
-
-  else if (lower.includes("open chatgpt")) {
-
-    addMessage("jarvis", "Opening ChatGPT.");
-
-    setTimeout(() => {
-      window.open("https://chatgpt.com", "_blank");
-    }, 700);
-
-  }
-
-  else if (
-    lower.startsWith("search ") ||
-    lower.includes("look up ") ||
-    lower.includes("find ")
-  ) {
-
-    addMessage(
-      "jarvis",
-      "Searching the web for: <b>" + command + "</b>"
+    window.open(
+    "https://uic.instructure.com",
+    "_blank"
     );
 
-    setTimeout(() => {
-      window.open(
-        "https://www.google.com/search?q=" +
-        encodeURIComponent(command),
-        "_blank"
-      );
-    }, 700);
+    return;
 
   }
 
-  else if (lower.includes("date")) {
+
+  // OPEN CHATGPT
+
+  if (lower.includes("open chatgpt")) {
+
+    addMessage("jarvis",
+    "Opening ChatGPT.");
+
+    window.open(
+    "https://chatgpt.com",
+    "_blank"
+    );
+
+    return;
+
+  }
+
+
+  // WEB SEARCH
+
+  if (
+    lower.startsWith("search ") ||
+    lower.startsWith("search for ") ||
+    lower.includes("search the web") ||
+    lower.startsWith("look up ")
+  ) {
+
+    const query = command
+      .replace(/search the web for/i, "")
+      .replace(/search for/i, "")
+      .replace(/search/i, "")
+      .replace(/look up/i, "")
+      .trim();
+
+    addMessage(
+    "jarvis",
+    "🌐 Searching the internet for:<br><b>" +
+    escapeHTML(query) +
+    "</b>"
+    );
+
+    window.open(
+    "https://www.google.com/search?q=" +
+    encodeURIComponent(query),
+    "_blank"
+    );
+
+    return;
+
+  }
+
+
+  // DATE
+
+  if (
+    lower.includes("date") ||
+    lower.includes("what day")
+  ) {
 
     const today = new Date();
 
     addMessage(
-      "jarvis",
-      "Today's date is: <b>" + today.toDateString() + "</b>"
+    "jarvis",
+    "Today's date is:<br><b>" +
+    today.toDateString() +
+    "</b>"
     );
+
+    return;
 
   }
 
-  else if (lower.includes("homework")) {
+
+  // HOMEWORK
+
+  if (
+    lower.includes("homework") ||
+    lower.includes("assignment")
+  ) {
 
     addMessage(
-      "jarvis",
-      "Homework tracking is ready for the next upgrade. We can connect this to a dashboard and approved Canvas access."
+    "jarvis",
+    "📝 Homework system activated.<br><br>" +
+    "Soon I'll connect this to your assignment dashboard."
     );
+
+    return;
 
   }
 
-  else {
 
-    addMessage(
-      "jarvis",
-      "I understand your request: <b>" + command + "</b><br><br>" +
-      "My full AI brain is not connected yet. For now, I can recognize commands, search the web, and open supported services. Next, we'll connect a real AI system."
-    );
+  // AI BRAIN PLACEHOLDER
 
-  }
+  askAI(command);
 
 }
 
-function webSearch() {
 
-  const query = prompt("What would you like JARVIS to search for?");
+async function askAI(command) {
 
-  if (query) {
+  const typing = document.createElement("div");
 
-    window.open(
-      "https://www.google.com/search?q=" +
-      encodeURIComponent(query),
-      "_blank"
+  typing.className =
+  "message jarvis typing";
+
+  typing.id = "typing";
+
+  typing.innerHTML =
+  "<b>J.A.R.V.I.S:</b><br>Thinking...";
+
+  chat.appendChild(typing);
+
+  chat.scrollTop = chat.scrollHeight;
+
+
+  /*
+  IMPORTANT:
+
+  This is where our REAL AI connection
+  will go next.
+
+  Your GitHub Pages website cannot safely
+  store an API key.
+  */
+
+
+  setTimeout(() => {
+
+    const typingMessage =
+    document.getElementById("typing");
+
+    if (typingMessage) {
+      typingMessage.remove();
+    }
+
+    addMessage(
+    "jarvis",
+
+    "🤖 My AI brain is ready to be connected.<br><br>" +
+
+    "The next step is connecting this website " +
+    "to a secure AI backend so I can answer " +
+    "your questions directly inside J.A.R.V.I.S."
     );
 
-  }
+  }, 800);
 
 }
+
+
+function searchWeb() {
+
+  const query =
+  prompt("What should J.A.R.V.I.S search for?");
+
+  if (!query) return;
+
+  addMessage(
+  "jarvis",
+  "🌐 Searching the internet for:<br><b>" +
+  escapeHTML(query) +
+  "</b>"
+  );
+
+  window.open(
+  "https://www.google.com/search?q=" +
+  encodeURIComponent(query),
+  "_blank"
+  );
+
+}
+
 
 function openCanvas() {
-  window.open("https://uic.instructure.com", "_blank");
+
+  window.open(
+  "https://uic.instructure.com",
+  "_blank"
+  );
+
 }
 
+
 function openChatGPT() {
-  window.open("https://chatgpt.com", "_blank");
+
+  window.open(
+  "https://chatgpt.com",
+  "_blank"
+  );
+
 }
+
 
 function showHomework() {
 
   addMessage(
-    "jarvis",
-    "📚 HOMEWORK SYSTEM<br><br>" +
-    "Next, we can build your personal assignment dashboard."
+  "jarvis",
+
+  "📝 <b>HOMEWORK SYSTEM</b><br><br>" +
+
+  "Future features:<br>" +
+
+  "• View assignments<br>" +
+  "• Track due dates<br>" +
+  "• Study planning<br>" +
+  "• Canvas integration"
   );
 
 }
