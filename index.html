@@ -7,9 +7,7 @@
 <title>J.A.R.V.I.S.</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -21,28 +19,23 @@ body {
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 25px;
+  padding: 20px;
 }
 
 header {
   text-align: center;
-  margin-bottom: 20px;
 }
 
 h1 {
-  letter-spacing: 10px;
-  font-size: 42px;
-  margin-bottom: 8px;
+  letter-spacing: 8px;
+  font-size: 40px;
   text-shadow: 0 0 20px #00e5ff;
 }
 
-.subtitle {
-  color: #aab;
-}
+.subtitle { color: #aab; }
 
 .status {
   display: inline-block;
-  margin-top: 10px;
   padding: 8px 15px;
   border: 1px solid #00e5ff;
   border-radius: 20px;
@@ -50,8 +43,8 @@ h1 {
 }
 
 .orb {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   margin: 25px auto;
   border-radius: 50%;
   border: 4px solid #00e5ff;
@@ -65,25 +58,22 @@ h1 {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
 }
 
 .chat {
+  height: 380px;
+  overflow-y: auto;
   background: #08111f;
   border: 1px solid #00e5ff;
   border-radius: 15px;
   padding: 15px;
-  height: 380px;
-  overflow-y: auto;
-  margin-bottom: 15px;
 }
 
 .message {
-  padding: 14px;
-  margin: 12px 0;
-  border-radius: 12px;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
   line-height: 1.5;
 }
 
@@ -101,6 +91,7 @@ h1 {
 .command-area {
   display: flex;
   gap: 10px;
+  margin-top: 15px;
 }
 
 input {
@@ -114,36 +105,26 @@ input {
 }
 
 button {
-  padding: 15px 20px;
+  padding: 14px;
+  margin: 4px;
   border: none;
   border-radius: 10px;
   background: #00e5ff;
   color: #001018;
   font-weight: bold;
-  cursor: pointer;
 }
 
 .quick {
-  margin-top: 20px;
+  margin-top: 15px;
   text-align: center;
 }
 
-.quick button {
-  margin: 5px;
-}
-
 .info {
-  margin-top: 25px;
+  margin-top: 20px;
   padding: 15px;
   background: #08111f;
   border-radius: 12px;
-  border: 1px solid #173a4a;
   color: white;
-}
-
-.typing {
-  opacity: 0.7;
-  font-style: italic;
 }
 </style>
 </head>
@@ -153,9 +134,9 @@ button {
 <div class="container">
 
 <header>
-  <h1>J.A.R.V.I.S.</h1>
-  <div class="subtitle">Personal Artificial Intelligence Assistant</div>
-  <div class="status">● SYSTEM ONLINE</div>
+<h1>J.A.R.V.I.S.</h1>
+<div class="subtitle">Personal Artificial Intelligence Assistant</div>
+<div class="status">● SYSTEM ONLINE</div>
 </header>
 
 <div class="orb">🤖</div>
@@ -164,8 +145,8 @@ button {
 
 <div class="message jarvis">
 <b>J.A.R.V.I.S:</b><br>
-Good day, Prince. Systems are online.<br>
-Ask me anything.
+Good day, Prince. Systems online.<br>
+Ask me anything, and I'll help you find the answer.
 </div>
 
 </div>
@@ -175,7 +156,7 @@ Ask me anything.
 <input
 id="command"
 placeholder="Ask J.A.R.V.I.S anything..."
-onkeydown="if(event.key==='Enter') runCommand()"
+onkeydown="if(event.key === 'Enter') runCommand()"
 >
 
 <button onclick="runCommand()">SEND</button>
@@ -184,25 +165,21 @@ onkeydown="if(event.key==='Enter') runCommand()"
 
 <div class="quick">
 
-<button onclick="searchWeb()">🔎 Search Web</button>
-
+<button onclick="askQuestion()">🤖 Ask AI</button>
+<button onclick="searchWeb()">🌐 Search Web</button>
 <button onclick="openCanvas()">📚 Canvas</button>
-
-<button onclick="openChatGPT()">💬 ChatGPT</button>
-
-<button onclick="showHomework()">📝 Homework</button>
+<button onclick="openHomework()">📝 Homework</button>
 
 </div>
 
 <div class="info">
 
-⚡ <b>J.A.R.V.I.S V3</b><br><br>
+⚡ <b>J.A.R.V.I.S FREE EDITION</b><br><br>
 
+🤖 AI via ChatGPT<br>
 🌐 Internet Search<br>
-🤖 AI Brain Ready<br>
-📚 UIC Tools<br>
-📝 Homework System<br>
-📱 App Shortcuts
+📚 UIC Canvas Access<br>
+📝 Homework Dashboard
 
 </div>
 
@@ -211,8 +188,7 @@ onkeydown="if(event.key==='Enter') runCommand()"
 <script>
 
 const chat = document.getElementById("chat");
-const commandInput = document.getElementById("command");
-
+const input = document.getElementById("command");
 
 function addMessage(type, text) {
 
@@ -220,24 +196,16 @@ function addMessage(type, text) {
 
   message.className = "message " + type;
 
-  if (type === "user") {
-
-    message.innerHTML =
-    "<b>YOU:</b><br>" + escapeHTML(text);
-
-  } else {
-
-    message.innerHTML =
-    "<b>J.A.R.V.I.S:</b><br>" + text;
-
-  }
+  message.innerHTML =
+    "<b>" +
+    (type === "user" ? "YOU" : "J.A.R.V.I.S") +
+    ":</b><br>" +
+    escapeHTML(text);
 
   chat.appendChild(message);
 
   chat.scrollTop = chat.scrollHeight;
-
 }
-
 
 function escapeHTML(text) {
 
@@ -246,245 +214,153 @@ function escapeHTML(text) {
   div.textContent = text;
 
   return div.innerHTML;
-
 }
 
+function runCommand() {
 
-async function runCommand() {
+  const question = input.value.trim();
 
-  const command = commandInput.value.trim();
+  if (!question) return;
 
-  if (!command) return;
+  addMessage("user", question);
 
-  addMessage("user", command);
+  input.value = "";
 
-  commandInput.value = "";
-
-  const lower = command.toLowerCase();
-
-
-  // OPEN CANVAS
+  const lower = question.toLowerCase();
 
   if (lower.includes("open canvas")) {
 
-    addMessage("jarvis",
-    "Opening UIC Canvas.");
+    addMessage("jarvis", "Opening UIC Canvas.");
 
-    window.open(
-    "https://uic.instructure.com",
-    "_blank"
-    );
+    window.open("https://uic.instructure.com", "_blank");
 
     return;
-
   }
 
-
-  // OPEN CHATGPT
-
-  if (lower.includes("open chatgpt")) {
-
-    addMessage("jarvis",
-    "Opening ChatGPT.");
-
-    window.open(
-    "https://chatgpt.com",
-    "_blank"
-    );
-
-    return;
-
-  }
-
-
-  // WEB SEARCH
-
-  if (
-    lower.startsWith("search ") ||
-    lower.startsWith("search for ") ||
-    lower.includes("search the web") ||
-    lower.startsWith("look up ")
-  ) {
-
-    const query = command
-      .replace(/search the web for/i, "")
-      .replace(/search for/i, "")
-      .replace(/search/i, "")
-      .replace(/look up/i, "")
-      .trim();
-
-    addMessage(
-    "jarvis",
-    "🌐 Searching the internet for:<br><b>" +
-    escapeHTML(query) +
-    "</b>"
-    );
-
-    window.open(
-    "https://www.google.com/search?q=" +
-    encodeURIComponent(query),
-    "_blank"
-    );
-
-    return;
-
-  }
-
-
-  // DATE
-
-  if (
-    lower.includes("date") ||
-    lower.includes("what day")
-  ) {
+  if (lower.includes("date")) {
 
     const today = new Date();
 
     addMessage(
-    "jarvis",
-    "Today's date is:<br><b>" +
-    today.toDateString() +
-    "</b>"
+      "jarvis",
+      "Today is " + today.toDateString()
     );
 
     return;
-
   }
-
-
-  // HOMEWORK
 
   if (
-    lower.includes("homework") ||
-    lower.includes("assignment")
+    lower.startsWith("search ") ||
+    lower.includes("search the web")
   ) {
 
-    addMessage(
-    "jarvis",
-    "📝 Homework system activated.<br><br>" +
-    "Soon I'll connect this to your assignment dashboard."
-    );
+    searchGoogle(question);
 
     return;
-
   }
 
-
-  // AI BRAIN PLACEHOLDER
-
-  askAI(command);
-
-}
-
-
-async function askAI(command) {
-
-  const typing = document.createElement("div");
-
-  typing.className =
-  "message jarvis typing";
-
-  typing.id = "typing";
-
-  typing.innerHTML =
-  "<b>J.A.R.V.I.S:</b><br>Thinking...";
-
-  chat.appendChild(typing);
-
-  chat.scrollTop = chat.scrollHeight;
-
-
-  /*
-  IMPORTANT:
-
-  This is where our REAL AI connection
-  will go next.
-
-  Your GitHub Pages website cannot safely
-  store an API key.
-  */
-
+  addMessage(
+    "jarvis",
+    "🤖 I can send this question to ChatGPT for an intelligent answer."
+  );
 
   setTimeout(() => {
 
-    const typingMessage =
-    document.getElementById("typing");
-
-    if (typingMessage) {
-      typingMessage.remove();
-    }
-
-    addMessage(
-    "jarvis",
-
-    "🤖 My AI brain is ready to be connected.<br><br>" +
-
-    "The next step is connecting this website " +
-    "to a secure AI backend so I can answer " +
-    "your questions directly inside J.A.R.V.I.S."
+    const answer = confirm(
+      "Ask ChatGPT:\n\n" + question + "?"
     );
 
-  }, 800);
+    if (answer) {
+
+      openChatGPT(question);
+
+    }
+
+  }, 500);
 
 }
 
+function openChatGPT(question) {
 
-function searchWeb() {
+  /*
+  Opens ChatGPT.
 
-  const query =
-  prompt("What should J.A.R.V.I.S search for?");
+  The question is copied to the clipboard
+  when possible so you can paste it.
+  */
 
-  if (!query) return;
+  navigator.clipboard.writeText(question)
+    .catch(() => {});
+
+  window.open(
+    "https://chatgpt.com",
+    "_blank"
+  );
+
+}
+
+function askQuestion() {
+
+  const question = prompt(
+    "What would you like to ask J.A.R.V.I.S?"
+  );
+
+  if (!question) return;
+
+  addMessage("user", question);
 
   addMessage(
-  "jarvis",
-  "🌐 Searching the internet for:<br><b>" +
-  escapeHTML(query) +
-  "</b>"
+    "jarvis",
+    "Opening ChatGPT and preparing your question."
+  );
+
+  openChatGPT(question);
+
+}
+
+function searchGoogle(query) {
+
+  addMessage(
+    "jarvis",
+    "🌐 Searching the internet for: " + query
   );
 
   window.open(
-  "https://www.google.com/search?q=" +
-  encodeURIComponent(query),
-  "_blank"
+    "https://www.google.com/search?q=" +
+    encodeURIComponent(query),
+    "_blank"
   );
 
 }
 
+function searchWeb() {
+
+  const query = prompt(
+    "What should J.A.R.V.I.S search for?"
+  );
+
+  if (query) {
+
+    searchGoogle(query);
+
+  }
+
+}
 
 function openCanvas() {
 
   window.open(
-  "https://uic.instructure.com",
-  "_blank"
+    "https://uic.instructure.com",
+    "_blank"
   );
 
 }
 
-
-function openChatGPT() {
-
-  window.open(
-  "https://chatgpt.com",
-  "_blank"
-  );
-
-}
-
-
-function showHomework() {
+function openHomework() {
 
   addMessage(
-  "jarvis",
-
-  "📝 <b>HOMEWORK SYSTEM</b><br><br>" +
-
-  "Future features:<br>" +
-
-  "• View assignments<br>" +
-  "• Track due dates<br>" +
-  "• Study planning<br>" +
-  "• Canvas integration"
+    "jarvis",
+    "📝 Homework dashboard is coming next. We can build a system where you manually add assignments and due dates."
   );
 
 }
