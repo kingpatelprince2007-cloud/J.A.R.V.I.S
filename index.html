@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0, user-scalable=no">
+content="width=device-width, initial-scale=1.0,
+maximum-scale=1.0, user-scalable=no">
 
 <title>J.A.R.V.I.S.</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
@@ -16,7 +17,12 @@
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
     background: #05080d;
     color: white;
     height: 100vh;
@@ -28,13 +34,16 @@ body {
     height: 100vh;
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 
 .sidebar {
     width: 240px;
     background: #090e15;
     border-right: 1px solid #1d2935;
     padding: 20px;
+
     display: flex;
     flex-direction: column;
 }
@@ -47,24 +56,26 @@ body {
 }
 
 .logo span {
-    font-size: 12px;
     display: block;
+    font-size: 11px;
     opacity: .5;
     letter-spacing: 2px;
-    margin-top: 4px;
+    margin-top: 5px;
 }
 
 .nav button {
     width: 100%;
     padding: 14px;
     margin-bottom: 8px;
+
     border: 0;
     border-radius: 12px;
+
     background: transparent;
     color: #b7c3cf;
+
     text-align: left;
     font-size: 15px;
-    cursor: pointer;
 }
 
 .nav button:hover,
@@ -73,51 +84,69 @@ body {
     color: white;
 }
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .main {
     flex: 1;
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
-    min-width: 0;
 }
 
 .header {
     height: 65px;
+
     border-bottom: 1px solid #1d2935;
+
     display: flex;
     align-items: center;
-    padding: 0 20px;
     justify-content: space-between;
+
+    padding: 0 20px;
 }
 
 .status {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
+
     color: #8f9ba8;
+    font-size: 13px;
 }
 
 .dot {
     width: 8px;
     height: 8px;
+
     border-radius: 50%;
+
     background: #4ade80;
-    box-shadow: 0 0 10px #4ade80;
+
+    box-shadow:
+        0 0 10px #4ade80;
 }
 
-/* CHAT */
+/* =========================
+   CHAT
+========================= */
 
 .chat {
     flex: 1;
+
     overflow-y: auto;
+
     padding: 25px;
 }
 
 .message {
     max-width: 800px;
-    margin: 0 auto 20px;
+
+    margin:
+        0 auto 20px;
+
     display: flex;
     gap: 12px;
 }
@@ -125,19 +154,26 @@ body {
 .avatar {
     min-width: 38px;
     height: 38px;
+
     border-radius: 50%;
+
     background: #17222e;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
 }
 
 .bubble {
     background: #101821;
-    padding: 14px 17px;
+
+    padding:
+        14px 17px;
+
     border-radius: 16px;
+
     line-height: 1.5;
+
     white-space: pre-wrap;
 }
 
@@ -149,103 +185,124 @@ body {
     background: #193247;
 }
 
-/* INPUT */
+/* =========================
+   INPUT
+========================= */
 
 .input-area {
-    padding: 15px 20px 20px;
-    border-top: 1px solid #1d2935;
+    padding:
+        15px 20px 20px;
+
+    border-top:
+        1px solid #1d2935;
 }
 
 .input-box {
     max-width: 800px;
+
     margin: auto;
+
     display: flex;
     gap: 10px;
+
     background: #101821;
-    border: 1px solid #263442;
+
+    border:
+        1px solid #263442;
+
     border-radius: 18px;
+
     padding: 8px;
 }
 
 textarea {
     flex: 1;
+
     resize: none;
+
     border: 0;
     outline: none;
+
     background: transparent;
+
     color: white;
+
     font-size: 16px;
+
     padding: 10px;
+
     min-height: 44px;
     max-height: 120px;
 }
 
 .send {
     border: 0;
+
     border-radius: 13px;
+
     width: 48px;
+
     background: #23445b;
+
     color: white;
+
     font-size: 19px;
-    cursor: pointer;
 }
 
 .quick {
     max-width: 800px;
-    margin: 10px auto 0;
+
+    margin:
+        10px auto 0;
+
     display: flex;
     gap: 8px;
+
     overflow-x: auto;
 }
 
 .quick button {
     white-space: nowrap;
-    border: 1px solid #263442;
+
+    border:
+        1px solid #263442;
+
     background: #0d141c;
+
     color: #aeb9c5;
+
     border-radius: 20px;
-    padding: 8px 12px;
+
+    padding:
+        8px 12px;
 }
 
-/* PANELS */
+/* =========================
+   PANELS
+========================= */
 
 .panel {
     display: none;
-    padding: 25px;
-    overflow-y: auto;
-}
 
-.panel.active {
-    display: block;
+    padding: 25px;
+
+    overflow-y: auto;
 }
 
 .card {
     max-width: 800px;
-    margin: 0 auto 15px;
+
+    margin:
+        0 auto 15px;
+
     padding: 20px;
+
     background: #101821;
-    border: 1px solid #263442;
+
+    border:
+        1px solid #263442;
+
     border-radius: 18px;
-}
-
-.task {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 0;
-    border-bottom: 1px solid #263442;
-}
-
-.task button {
-    margin-left: auto;
-    border: 0;
-    background: transparent;
-    color: #9ca8b4;
-}
-
-.task.done span {
-    text-decoration: line-through;
-    opacity: .5;
 }
 
 .add-task {
@@ -255,27 +312,70 @@ textarea {
 
 .add-task input {
     flex: 1;
+
     background: #080d13;
-    border: 1px solid #263442;
+
+    border:
+        1px solid #263442;
+
     color: white;
+
     border-radius: 10px;
+
     padding: 12px;
 }
 
 .add-task button {
     border: 0;
+
     border-radius: 10px;
-    padding: 12px 16px;
+
+    padding:
+        12px 16px;
+
     background: #23445b;
+
     color: white;
 }
 
-/* MOBILE / IPAD */
+.task {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 0;
+
+    border-bottom:
+        1px solid #263442;
+}
+
+.task button {
+    margin-left: auto;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #9ca8b4;
+}
+
+.task.done span {
+    text-decoration: line-through;
+    opacity: .5;
+}
+
+/* =========================
+   MOBILE / IPAD
+========================= */
 
 @media (max-width: 800px) {
+
     .sidebar {
         width: 70px;
-        padding: 12px 8px;
+        padding:
+            12px 8px;
     }
 
     .logo {
@@ -295,288 +395,656 @@ textarea {
     .nav button {
         text-align: center;
         font-size: 0;
-        padding: 13px 5px;
+        padding:
+            13px 5px;
     }
 
     .nav button::first-letter {
         font-size: 20px;
     }
 
-    .header {
-        padding: 0 12px;
-    }
-
     .chat {
-        padding: 15px 10px;
+        padding:
+            15px 10px;
     }
 
     .input-area {
-        padding: 10px;
+        padding:
+            10px;
     }
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
-    <aside class="sidebar">
+<!-- =========================
+     SIDEBAR
+========================= -->
 
-        <div class="logo">
-            J.A.R.V.I.S.
-            <span>PERSONAL AI SYSTEM</span>
-        </div>
+<aside class="sidebar">
 
-        <div class="nav">
+    <div class="logo">
 
-            <button class="active" onclick="showPage('chatPage', this)">
-                💬 Chat
-            </button>
+        J.A.R.V.I.S.
 
-            <button onclick="showPage('tasksPage', this)">
-                📋 Tasks
-            </button>
+        <span>
+            PERSONAL AI SYSTEM
+        </span>
 
-            <button onclick="showPage('webPage', this)">
-                🌐 Web
-            </button>
+    </div>
 
-            <button onclick="showPage('filesPage', this)">
-                📁 Files
-            </button>
+    <div class="nav">
 
-            <button onclick="clearChat()">
-                🗑️ Clear
-            </button>
+        <button
+            class="active"
+            onclick="showPage('chatPage', this)">
+            💬 Chat
+        </button>
 
-        </div>
+        <button
+            onclick="showPage('tasksPage', this)">
+            📋 Tasks
+        </button>
 
-    </aside>
+        <button
+            onclick="showPage('webPage', this)">
+            🌐 Web
+        </button>
 
+        <button
+            onclick="showPage('filesPage', this)">
+            📁 Files
+        </button>
 
-    <main class="main">
+        <button
+            onclick="showPage('settingsPage', this)">
+            ⚙️ Settings
+        </button>
 
-        <header class="header">
+        <button
+            onclick="clearChat()">
+            🗑️ Clear
+        </button>
 
-            <strong>J.A.R.V.I.S.</strong>
+    </div>
 
-            <div class="status">
-                <div class="dot"></div>
-                ONLINE
-            </div>
+</aside>
 
-        </header>
 
+<!-- =========================
+     MAIN
+========================= -->
 
-        <!-- CHAT PAGE -->
+<main class="main">
 
-        <section id="chatPage" class="chat">
 
-            <div class="message">
+<header class="header">
 
-                <div class="avatar">🤖</div>
+    <strong>
+        J.A.R.V.I.S.
+    </strong>
 
-                <div class="bubble">
-                    Hello. I am J.A.R.V.I.S.
+    <div class="status">
 
-                    I am ready to assist you.
+        <div class="dot"></div>
 
-                    Ask me something, create a task, or search the web.
-                </div>
+        ONLINE
 
-            </div>
+    </div>
 
-        </section>
+</header>
 
 
-        <!-- TASKS -->
+<!-- =========================
+     CHAT PAGE
+========================= -->
 
-        <section id="tasksPage" class="panel">
+<section
+    id="chatPage"
+    class="chat">
 
-            <div class="card">
 
-                <h2>📋 Tasks</h2>
+<div class="message">
 
-                <div class="add-task">
+    <div class="avatar">
+        🤖
+    </div>
 
-                    <input
-                        id="taskInput"
-                        placeholder="Add a task..."
-                    >
+    <div class="bubble">
 
-                    <button onclick="addTask()">
-                        Add
-                    </button>
+Hello. I am J.A.R.V.I.S.
 
-                </div>
+Your personal AI assistant is ready.
 
-                <div id="taskList"></div>
+You can ask questions, create tasks,
+search the web, or select files.
 
-            </div>
+Type "What can you do?" to see my capabilities.
 
-        </section>
+    </div>
 
+</div>
 
-        <!-- WEB -->
 
-        <section id="webPage" class="panel">
+</section>
 
-            <div class="card">
 
-                <h2>🌐 Web Search</h2>
+<!-- =========================
+     TASKS
+========================= -->
 
-                <p>
-                    Search the internet from J.A.R.V.I.S.
-                </p>
+<section
+    id="tasksPage"
+    class="panel">
 
-                <div class="add-task">
+<div class="card">
 
-                    <input
-                        id="searchInput"
-                        placeholder="What do you want to search?"
-                    >
+<h2>📋 Tasks</h2>
 
-                    <button onclick="webSearch()">
-                        Search
-                    </button>
+<div class="add-task">
 
-                </div>
+<input
+    id="taskInput"
+    placeholder="Add a task..."
+>
 
-            </div>
+<button onclick="addTask()">
+    Add
+</button>
 
-        </section>
+</div>
 
+<div id="taskList"></div>
 
-        <!-- FILES -->
+</div>
 
-        <section id="filesPage" class="panel">
+</section>
 
-            <div class="card">
 
-                <h2>📁 Files</h2>
+<!-- =========================
+     WEB
+========================= -->
 
-                <p>
-                    Choose files from your iPad to work with them.
-                </p>
+<section
+    id="webPage"
+    class="panel">
 
-                <input
-                    type="file"
-                    id="fileInput"
-                    multiple
-                    onchange="showFiles()"
-                >
+<div class="card">
 
-                <div id="fileList"></div>
+<h2>🌐 Web Search</h2>
 
-            </div>
+<p>
+Search the internet from J.A.R.V.I.S.
+</p>
 
-        </section>
+<div class="add-task">
 
+<input
+    id="searchInput"
+    placeholder="What do you want to search?"
+>
 
-        <!-- INPUT -->
+<button onclick="webSearch()">
+    Search
+</button>
 
-        <div id="chatInputArea" class="input-area">
+</div>
 
-            <div class="input-box">
+</div>
 
-                <textarea
-                    id="userInput"
-                    placeholder="Ask J.A.R.V.I.S..."
-                    rows="1"
-                    onkeydown="handleKey(event)"
-                ></textarea>
+</section>
 
-                <button
-                    class="send"
-                    onclick="sendMessage()"
-                >
-                    ➤
-                </button>
 
-            </div>
+<!-- =========================
+     FILES
+========================= -->
 
-            <div class="quick">
+<section
+    id="filesPage"
+    class="panel">
 
-                <button onclick="quickAsk('Explain this to me simply')">
-                    Explain something
-                </button>
+<div class="card">
 
-                <button onclick="quickAsk('Help me make a study plan')">
-                    Study plan
-                </button>
+<h2>📁 Files</h2>
 
-                <button onclick="quickAsk('What can you do?')">
-                    What can you do?
-                </button>
+<p>
+Choose files from your iPad.
+</p>
 
-            </div>
+<input
+    type="file"
+    id="fileInput"
+    multiple
+    onchange="showFiles()"
+>
 
-        </div>
+<div id="fileList"></div>
 
-    </main>
+</div>
+
+</section>
+
+
+<!-- =========================
+     SETTINGS
+========================= -->
+
+<section
+    id="settingsPage"
+    class="panel">
+
+<div class="card">
+
+<h2>⚙️ Settings</h2>
+
+<p>
+J.A.R.V.I.S. v2.0
+</p>
+
+<p>
+Storage:
+Local browser storage
+</p>
+
+<p>
+AI:
+Ready for secure AI backend
+</p>
+
+<button
+    onclick="clearEverything()">
+
+Clear all local data
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     INPUT
+========================= -->
+
+<div
+    id="chatInputArea"
+    class="input-area">
+
+<div class="input-box">
+
+<textarea
+    id="userInput"
+    placeholder="Ask J.A.R.V.I.S..."
+    rows="1"
+    onkeydown="handleKey(event)"
+></textarea>
+
+<button
+    class="send"
+    onclick="sendMessage()">
+
+➤
+
+</button>
+
+</div>
+
+
+<div class="quick">
+
+<button
+    onclick="quickAsk('What can you do?')">
+
+What can you do?
+
+</button>
+
+<button
+    onclick="quickAsk('Help me make a study plan')">
+
+Study plan
+
+</button>
+
+<button
+    onclick="quickAsk('What time is it?')">
+
+Time
+
+</button>
+
+<button
+    onclick="quickAsk('What is today\\'s date?')">
+
+Date
+
+</button>
+
+</div>
+
+</div>
+
+
+</main>
 
 </div>
 
 
 <script>
 
-/* =========================
+/* ==================================================
+   J.A.R.V.I.S. CORE
+================================================== */
+
+const JARVIS = {
+
+    version: "2.0",
+
+    async ask(message) {
+
+        const q =
+            message.toLowerCase().trim();
+
+
+        /* =========================
+           HELP
+        ========================= */
+
+        if (
+            q.includes("what can you do") ||
+            q.includes("what do you do")
+        ) {
+
+            return `I am J.A.R.V.I.S. 2.0.
+
+Currently I can:
+
+• Chat with you
+• Remember conversations locally
+• Create and manage tasks
+• Search the web
+• Work with files you select
+• Tell you the date and time
+• Help organize your school work
+
+My secure AI connection is prepared for a future backend.
+
+I will never ask you to put a private API key directly into this website.`;
+
+        }
+
+
+        /* =========================
+           GREETINGS
+        ========================= */
+
+        if (
+            q === "hi" ||
+            q === "hello" ||
+            q === "hey"
+        ) {
+
+            return "Hello. How can I assist you?";
+
+        }
+
+
+        /* =========================
+           TIME
+        ========================= */
+
+        if (
+            q.includes("what time") ||
+            q === "time"
+        ) {
+
+            return "The current time on your device is " +
+                new Date().toLocaleTimeString();
+
+        }
+
+
+        /* =========================
+           DATE
+        ========================= */
+
+        if (
+            q.includes("today's date") ||
+            q.includes("todays date") ||
+            q === "date"
+        ) {
+
+            return "Today is " +
+                new Date().toLocaleDateString();
+
+        }
+
+
+        /* =========================
+           TASK COMMAND
+        ========================= */
+
+        if (
+            q.startsWith("/task ")
+        ) {
+
+            const task =
+                message.substring(6).trim();
+
+            if (!task)
+                return "Please tell me what task to add.";
+
+            tasks.push({
+                text: task,
+                done: false
+            });
+
+            saveTasks();
+            renderTasks();
+
+            return "Task added: " + task;
+
+        }
+
+
+        /* =========================
+           SEARCH COMMAND
+        ========================= */
+
+        if (
+            q.startsWith("/search ")
+        ) {
+
+            const search =
+                message.substring(8).trim();
+
+            if (!search)
+                return "Please tell me what to search.";
+
+            window.open(
+                "https://www.google.com/search?q=" +
+                encodeURIComponent(search),
+                "_blank"
+            );
+
+            return "Opening a web search for:\n" + search;
+
+        }
+
+
+        /* =========================
+           SCHOOL HELP
+        ========================= */
+
+        if (
+            q.includes("homework") ||
+            q.includes("assignment") ||
+            q.includes("study")
+        ) {
+
+            return `I can help you organize your school work.
+
+Try:
+
+/task Finish chemistry homework
+
+or
+
+/task Study calculus for 30 minutes
+
+You can also use the Tasks section to manage everything.`;
+
+        }
+
+
+        /* =========================
+           THANK YOU
+        ========================= */
+
+        if (
+            q.includes("thank")
+        ) {
+
+            return "You're welcome. I'm here to help.";
+
+        }
+
+
+        /* =========================
+           FALLBACK
+        ========================= */
+
+        return `I received:
+
+"${message}"
+
+I'm currently running in free local mode.
+
+I can already manage tasks, search the web,
+work with selected files, and remember your
+conversation locally.
+
+For full AI reasoning, the next step is connecting
+this interface to a secure AI backend.`;
+
+    }
+
+};
+
+
+/* ==================================================
    CHAT
-========================= */
+================================================== */
 
-const chat = document.getElementById("chatPage");
+const chat =
+    document.getElementById("chatPage");
 
-const input = document.getElementById("userInput");
+const input =
+    document.getElementById("userInput");
+
 
 function addMessage(text, user = false) {
 
-    const message = document.createElement("div");
+    const message =
+        document.createElement("div");
 
     message.className =
-        "message " + (user ? "user" : "");
+        "message " +
+        (user ? "user" : "");
 
-    message.innerHTML = `
-        <div class="avatar">
-            ${user ? "👤" : "🤖"}
-        </div>
 
-        <div class="bubble"></div>
-    `;
+    const avatar =
+        document.createElement("div");
 
-    message.querySelector(".bubble").textContent = text;
+    avatar.className =
+        "avatar";
+
+    avatar.textContent =
+        user ? "👤" : "🤖";
+
+
+    const bubble =
+        document.createElement("div");
+
+    bubble.className =
+        "bubble";
+
+    bubble.textContent =
+        text;
+
+
+    message.appendChild(avatar);
+    message.appendChild(bubble);
 
     chat.appendChild(message);
 
-    chat.scrollTop = chat.scrollHeight;
+    chat.scrollTop =
+        chat.scrollHeight;
 
     saveChat();
+
 }
 
 
-function sendMessage() {
+async function sendMessage() {
 
-    const text = input.value.trim();
+    const text =
+        input.value.trim();
 
-    if (!text) return;
+    if (!text)
+        return;
 
-    addMessage(text, true);
+
+    addMessage(
+        text,
+        true
+    );
+
 
     input.value = "";
 
-    setTimeout(() => {
 
-        const response = jarvisResponse(text);
+    const thinking =
+        document.createElement("div");
 
-        addMessage(response);
+    thinking.className =
+        "message";
 
-    }, 400);
+    thinking.innerHTML = `
+        <div class="avatar">🤖</div>
+        <div class="bubble">Thinking...</div>
+    `;
+
+    chat.appendChild(thinking);
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
+
+    const response =
+        await JARVIS.ask(text);
+
+
+    thinking.remove();
+
+
+    addMessage(
+        response
+    );
+
 }
 
 
 function quickAsk(text) {
 
-    input.value = text;
+    input.value =
+        text;
 
     sendMessage();
 
@@ -585,7 +1053,10 @@ function quickAsk(text) {
 
 function handleKey(event) {
 
-    if (event.key === "Enter" && !event.shiftKey) {
+    if (
+        event.key === "Enter" &&
+        !event.shiftKey
+    ) {
 
         event.preventDefault();
 
@@ -596,110 +1067,60 @@ function handleKey(event) {
 }
 
 
-/* =========================
-   BASIC JARVIS BRAIN
-========================= */
-
-function jarvisResponse(text) {
-
-    const q = text.toLowerCase();
-
-    if (
-        q.includes("hello") ||
-        q.includes("hi") ||
-        q.includes("hey")
-    ) {
-        return "Hello. How can I assist you?";
-    }
-
-    if (
-        q.includes("what can you do") ||
-        q.includes("what do you do")
-    ) {
-        return `I can currently:
-
-• Answer basic questions
-• Help organize tasks
-• Open web searches
-• Work with files you select
-• Save your tasks and conversation locally
-
-The next version can connect me to a real AI model.`;
-    }
-
-    if (
-        q.includes("study") ||
-        q.includes("homework")
-    ) {
-        return "I can help you break your work into smaller tasks. Try adding your assignment to the Tasks section.";
-    }
-
-    if (
-        q.includes("time")
-    ) {
-        return "Your current device time is " +
-            new Date().toLocaleTimeString();
-    }
-
-    if (
-        q.includes("date")
-    ) {
-        return "Today is " +
-            new Date().toLocaleDateString();
-    }
-
-    if (
-        q.includes("thank")
-    ) {
-        return "You're welcome.";
-    }
-
-    return `I received your request:
-
-"${text}"
-
-I am currently running in free offline mode.
-
-To give me real AI reasoning, we can connect an AI API in the next step.`;
-}
-
-
-/* =========================
+/* ==================================================
    NAVIGATION
-========================= */
+================================================== */
 
 function showPage(page, button) {
 
     document
         .querySelectorAll(".chat, .panel")
-        .forEach(el => el.style.display = "none");
+        .forEach(
+            el => el.style.display = "none"
+        );
+
 
     document
         .getElementById(page)
         .style.display = "block";
 
+
     document
         .querySelectorAll(".nav button")
-        .forEach(btn => btn.classList.remove("active"));
+        .forEach(
+            btn =>
+                btn.classList.remove("active")
+        );
+
 
     if (button)
         button.classList.add("active");
 
+
     const inputArea =
-        document.getElementById("chatInputArea");
+        document.getElementById(
+            "chatInputArea"
+        );
+
 
     inputArea.style.display =
-        page === "chatPage" ? "block" : "none";
+        page === "chatPage"
+            ? "block"
+            : "none";
 
 }
 
 
-/* =========================
-   TASKS
-========================= */
+/* ==================================================
+   TASK SYSTEM
+================================================== */
 
 let tasks =
-    JSON.parse(localStorage.getItem("jarvisTasks") || "[]");
+    JSON.parse(
+        localStorage.getItem(
+            "jarvisTasks"
+        ) || "[]"
+    );
 
 
 function saveTasks() {
@@ -715,55 +1136,115 @@ function saveTasks() {
 function renderTasks() {
 
     const list =
-        document.getElementById("taskList");
+        document.getElementById(
+            "taskList"
+        );
 
     list.innerHTML = "";
 
-    tasks.forEach((task, index) => {
 
-        const div = document.createElement("div");
+    tasks.forEach(
+        (task, index) => {
 
-        div.className =
-            "task " + (task.done ? "done" : "");
+            const div =
+                document.createElement(
+                    "div"
+                );
 
-        div.innerHTML = `
+            div.className =
+                "task " +
+                (
+                    task.done
+                        ? "done"
+                        : ""
+                );
 
-            <input
-                type="checkbox"
-                ${task.done ? "checked" : ""}
-                onchange="toggleTask(${index})"
-            >
 
-            <span>${escapeHTML(task.text)}</span>
+            const checkbox =
+                document.createElement(
+                    "input"
+                );
 
-            <button onclick="deleteTask(${index})">
-                ✕
-            </button>
+            checkbox.type =
+                "checkbox";
 
-        `;
+            checkbox.checked =
+                task.done;
 
-        list.appendChild(div);
 
-    });
+            checkbox.onchange =
+                () =>
+                    toggleTask(index);
+
+
+            const span =
+                document.createElement(
+                    "span"
+                );
+
+            span.textContent =
+                task.text;
+
+
+            const deleteButton =
+                document.createElement(
+                    "button"
+                );
+
+            deleteButton.textContent =
+                "✕";
+
+
+            deleteButton.onclick =
+                () =>
+                    deleteTask(index);
+
+
+            div.appendChild(
+                checkbox
+            );
+
+            div.appendChild(
+                span
+            );
+
+            div.appendChild(
+                deleteButton
+            );
+
+
+            list.appendChild(div);
+
+        }
+    );
 
 }
 
 
 function addTask() {
 
-    const input =
-        document.getElementById("taskInput");
+    const taskInput =
+        document.getElementById(
+            "taskInput"
+        );
 
-    const text = input.value.trim();
 
-    if (!text) return;
+    const text =
+        taskInput.value.trim();
+
+
+    if (!text)
+        return;
+
 
     tasks.push({
         text: text,
         done: false
     });
 
-    input.value = "";
+
+    taskInput.value = "";
+
 
     saveTasks();
 
@@ -777,6 +1258,7 @@ function toggleTask(index) {
     tasks[index].done =
         !tasks[index].done;
 
+
     saveTasks();
 
     renderTasks();
@@ -786,7 +1268,11 @@ function toggleTask(index) {
 
 function deleteTask(index) {
 
-    tasks.splice(index, 1);
+    tasks.splice(
+        index,
+        1
+    );
+
 
     saveTasks();
 
@@ -795,17 +1281,21 @@ function deleteTask(index) {
 }
 
 
-/* =========================
+/* ==================================================
    WEB SEARCH
-========================= */
+================================================== */
 
 function webSearch() {
 
     const query =
-        document.getElementById("searchInput")
-        .value.trim();
+        document.getElementById(
+            "searchInput"
+        ).value.trim();
 
-    if (!query) return;
+
+    if (!query)
+        return;
+
 
     window.open(
         "https://www.google.com/search?q=" +
@@ -816,41 +1306,57 @@ function webSearch() {
 }
 
 
-/* =========================
+/* ==================================================
    FILES
-========================= */
+================================================== */
 
 function showFiles() {
 
     const files =
-        document.getElementById("fileInput").files;
+        document.getElementById(
+            "fileInput"
+        ).files;
+
 
     const list =
-        document.getElementById("fileList");
+        document.getElementById(
+            "fileList"
+        );
+
 
     list.innerHTML = "";
 
-    for (const file of files) {
+
+    for (
+        const file of files
+    ) {
 
         const div =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        div.className = "task";
 
-        div.innerHTML = `
-            📄 ${escapeHTML(file.name)}
-        `;
+        div.className =
+            "task";
 
-        list.appendChild(div);
+
+        div.textContent =
+            "📄 " + file.name;
+
+
+        list.appendChild(
+            div
+        );
 
     }
 
 }
 
 
-/* =========================
-   LOCAL CHAT STORAGE
-========================= */
+/* ==================================================
+   CHAT MEMORY
+================================================== */
 
 function saveChat() {
 
@@ -865,46 +1371,65 @@ function saveChat() {
 function loadChat() {
 
     const saved =
-        localStorage.getItem("jarvisChat");
+        localStorage.getItem(
+            "jarvisChat"
+        );
+
 
     if (saved) {
 
-        chat.innerHTML = saved;
+        chat.innerHTML =
+            saved;
 
     }
 
 }
 
 
+/* ==================================================
+   CLEAR
+================================================== */
+
 function clearChat() {
 
-    if (!confirm("Clear your J.A.R.V.I.S. conversation?"))
+    if (
+        !confirm(
+            "Clear your J.A.R.V.I.S. conversation?"
+        )
+    )
         return;
 
-    localStorage.removeItem("jarvisChat");
+
+    localStorage.removeItem(
+        "jarvisChat"
+    );
+
 
     location.reload();
 
 }
 
 
-/* =========================
-   SECURITY HELPER
-========================= */
+function clearEverything() {
 
-function escapeHTML(text) {
+    if (
+        !confirm(
+            "Delete all J.A.R.V.I.S. local data?"
+        )
+    )
+        return;
 
-    const div =
-        document.createElement("div");
 
-    div.textContent = text;
+    localStorage.clear();
 
-    return div.innerHTML;
+    location.reload();
 
 }
 
 
-/* START */
+/* ==================================================
+   START
+================================================== */
 
 renderTasks();
 
